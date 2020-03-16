@@ -304,14 +304,26 @@ export default class GravityForm extends Component {
                 </View>
             )
         })
+
+        const showFormTitle = this.state.formData.title.length && !this.props.hideFormTitle;
+        const showFormDescription = this.state.formData.description.length && !this.props.hideFormDescription;
+
         return (
             <ScrollView style={this.style.formWrapper}>
-                {this.state.formData.title.length > 0 && !this.props.hideFormTitle &&
+                {(showFormTitle || showFormDescription) &&
                     <View style={this.style.formHeader}>
-                        <Text style={this.style.formTitle}>{this.state.formData.title}</Text>
+                        {showFormTitle &&
+                            <Text style={this.style.formTitle}>{this.state.formData.title}</Text>
+                        }
+
+                        {showFormDescription &&
+                            <Text style={this.style.formDescription}>{this.state.formData.description}</Text>
+                        }
                     </View>
                 }
-                {fields}
+                <View style={this.style.formBody}>
+                    {fields}
+                </View>
                 {this.state.formData.button &&
                     <View style={this.style.formFooter}>
                         <TouchableOpacity onPress={() => this.submitForm()} style={this.style.button}>
