@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import ValidationComponent from 'react-native-form-validator'
 import base64 from 'react-native-base64'
@@ -275,14 +275,14 @@ export default class GravityForm extends Component {
         if (this.state.isLoading) {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Fetching Gravity Form...</Text>
+                    <ActivityIndicator size="large" color="#DCC55D" />
                 </View>
             )
         }
         if (this.state.isSending) {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Submitting Form...</Text>
+                    <ActivityIndicator size="large" color="#DCC55D" />
                 </View>
             )
         }
