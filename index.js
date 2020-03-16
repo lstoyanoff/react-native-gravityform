@@ -38,6 +38,7 @@ export default class GravityForm extends Component {
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.fieldsProps = this.props.fieldsProps || {};
+        this.loaderProps = this.props.loaderProps || {};
     }
 
     componentDidMount() {
@@ -275,14 +276,14 @@ export default class GravityForm extends Component {
         if (this.state.isLoading) {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-                    <ActivityIndicator size="large" color="#DCC55D" />
+                    <ActivityIndicator {...this.loaderProps} />
                 </View>
             )
         }
         if (this.state.isSending) {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-                    <ActivityIndicator size="large" color="#DCC55D" />
+                    <ActivityIndicator {...this.loaderProps} />
                 </View>
             )
         }
