@@ -30,7 +30,7 @@ export default class CheckboxField extends Component {
                         ]} />
                     </View>
                     <View style={[{ paddingHorizontal: 10 }, this.style.choiceTextWrapper, this.style.checkboxChoiceTextWrapper]}>
-                        <HTML html={input.label} />
+                        <HTML html={input.label} baseFontStyle={this.style.choiceText} />
                     </View>
                 </TouchableOpacity>
             )
