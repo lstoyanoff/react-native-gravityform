@@ -22,7 +22,7 @@ export default class SelectField extends Component {
             return <Picker.Item key={index.toString()} label={choice.text} value={choice.value} />
         })
         return (
-            <View style={[this.style.fieldWrapper, this.style.selectFieldWrapper]}>
+            <View style={[this.style.fieldWrapper, this.style.selectFieldWrapper]} {...this.props.fieldProps}>
                 {this.data.label.length > 0 &&
                     <Text style={[this.style.fieldLabel, this.style.selectFieldLabel]}>{this.data.label}</Text>
                 }

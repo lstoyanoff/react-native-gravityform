@@ -61,7 +61,7 @@ export default class NameField extends Component {
             )
         })
         return (
-            <View style={[this.style.fieldWrapper, this.style.nameFieldWrapper]}>
+            <View style={[this.style.fieldWrapper, this.style.nameFieldWrapper]} {...this.props.fieldProps}>
                 {this.data.label.length > 0 &&
                     <Text style={[this.style.fieldLabel, this.style.nameFieldLabel]}>{this.data.label}</Text>
                 }

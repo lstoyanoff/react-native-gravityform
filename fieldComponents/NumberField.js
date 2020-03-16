@@ -26,7 +26,8 @@ export default class NumberField extends Component {
                     style={[this.style.fieldInput, this.style.numberFieldInput]}
                     onChangeText={(text) => this.handleChange(text)}
                     placeholder={this.data.placeholder}
-                    value={this.props.value}
+					value={this.props.value}
+					{...this.props.fieldProps}
                 />
             </View>
         )

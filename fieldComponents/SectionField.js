@@ -10,7 +10,7 @@ export default class SectionField extends Component {
 
     render() {
         return (
-            <View style={[this.style.fieldWrapper, this.style.sectionFieldWrapper]}>
+            <View style={[this.style.fieldWrapper, this.style.sectionFieldWrapper]} {...this.props.fieldProps}>
                 {this.data.label.length > 0 &&
                     <Text style={[this.style.fieldLabel, this.style.sectionFieldLabel]}>{this.data.label}</Text>
                 }

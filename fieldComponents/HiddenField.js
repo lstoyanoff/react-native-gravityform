@@ -26,7 +26,8 @@ export default class HiddenField extends Component {
                     style={[this.style.fieldInput, this.style.hiddenFieldInput]}
                     onChangeText={(number) => this.handleChange(number)}
                     placeholder={this.data.placeholder}
-                    value={this.props.value}
+					value={this.props.value}
+					{...this.props.fieldProps}
                 />
             </View>
         )

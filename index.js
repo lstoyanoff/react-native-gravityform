@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ScrollView, View, Text, TouchableOpacity } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import ValidationComponent from 'react-native-form-validator'
 import base64 from 'react-native-base64'
 import {
@@ -36,6 +37,7 @@ export default class GravityForm extends Component {
             submitFailure: false,
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
+        this.fieldsProps = this.props.fieldsProps || {};
     }
 
     componentDidMount() {
@@ -302,6 +304,7 @@ export default class GravityForm extends Component {
                         onChange={this.handleFieldChange}
                         style={this.style}
                         value={this.state.fieldValues[field.id]}
+                        fieldProps={this.fieldsProps[field.type]}
                     />
                 </View>
             )
@@ -311,7 +314,7 @@ export default class GravityForm extends Component {
         const showFormDescription = this.state.formData.description.length && !this.props.hideFormDescription;
 
         return (
-            <ScrollView style={this.style.formWrapper}>
+            <KeyboardAwareScrollView style={this.style.formWrapper}>
                 {(showFormTitle || showFormDescription) &&
                     <View style={this.style.formHeader}>
                         {showFormTitle &&
@@ -333,7 +336,7 @@ export default class GravityForm extends Component {
                         </TouchableOpacity>
                     </View>
                 }
-            </ScrollView>
+            </KeyboardAwareScrollView>
         )
     }
 }

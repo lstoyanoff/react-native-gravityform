@@ -36,7 +36,7 @@ export default class CheckboxField extends Component {
             )
         })
         return (
-            <View style={[this.style.fieldWrapper, this.style.checkboxFieldWrapper]}>
+            <View style={[this.style.fieldWrapper, this.style.checkboxFieldWrapper]} {...this.props.fieldProps}>
                 {this.data.label.length > 0 &&
                     <Text style={[this.style.fieldLabel, this.style.checkboxFieldLabel]}>{this.data.label}</Text>
                 }

@@ -12,7 +12,7 @@ export default class HtmlField extends Component {
     render() {
         return (
             <View style={[this.style.fieldWrapper, this.style.htmlFieldWrapper]}>
-                <HTML html={this.data.content} />
+                <HTML html={this.data.content} {...this.props.fieldProps} />
             </View>
         )
     }

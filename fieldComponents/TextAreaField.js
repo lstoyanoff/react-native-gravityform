@@ -33,6 +33,7 @@ export default class TextAreaField extends Component {
                     onChangeText={(text) => this.handleChange(text)}
                     placeholder={this.data.placeholder}
                     value={this.props.value}
+                    {...this.props.fieldProps}
                 />
             </View>
         )
