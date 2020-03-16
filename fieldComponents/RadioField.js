@@ -17,7 +17,12 @@ export default class RadioField extends Component {
         const choices = this.data.choices.map((choice, index) => {
             return (
                 <TouchableOpacity
-                    style={[{ flexDirection: 'row', marginBottom: 15 }, this.style.choiceWrapper, this.style.radioChoiceWrapper]}
+                    style={[
+                        { flexDirection: 'row', marginBottom: 15 },
+                        this.style.choiceWrapper,
+                        this.style.radioChoiceWrapper,
+                        this.props.value == choice.value ? this.style.selectedRadioChoiceWrapper : null
+                    ]}
                     key={index.toString()}
                     onPress={() => this.handleChange(this.data.id, choice.value)}
                 >
@@ -28,7 +33,15 @@ export default class RadioField extends Component {
                             this.props.value == choice.value ? this.style.selectedRadioButton : null
                         ]} />
                     </View>
-                    <Text style={[{ paddingHorizontal: 10 }, this.style.choiceText, this.style.radioChoiceText]}>{choice.text}</Text>
+                    <Text style={[
+                        { paddingHorizontal: 10 },
+                        this.style.choiceText,
+                        this.style.radioChoiceText,
+                        this.props.value == choice.value ? this.style.selectedRadioText : null
+                    ]}
+                    >
+                        {choice.text}
+                    </Text>
                 </TouchableOpacity>
             )
         })
