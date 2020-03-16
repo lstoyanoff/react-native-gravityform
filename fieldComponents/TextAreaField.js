@@ -19,16 +19,17 @@ export default class TextAreaField extends Component {
 
     render() {
         return (
-            <View style={[this.style.fieldWrapper, this.style.textFieldWrapper]}>
+            <View style={[this.style.fieldWrapper, this.style.textAreaFieldWrapper]}>
                 {this.data.label.length > 0 &&
-                    <Text style={[this.style.fieldLabel, this.style.textFieldLabel]}>{this.data.label}</Text>
+                    <Text style={[this.style.fieldLabel, this.style.textAreaFieldLabel]}>{this.data.label}</Text>
                 }
                 {this.data.description.length > 0 &&
-                    <Text style={[this.style.fieldDescription, this.style.textFieldDescription]}>{this.data.description}</Text>
+                    <Text style={[this.style.fieldDescription, this.style.textAreaFieldDescription]}>{this.data.description}</Text>
                 }
                 <TextInput
                     multiline={true}
-                    style={[this.style.fieldInput, this.style.textFieldInput]}
+                    textAlignVertical="top"
+                    style={[this.style.fieldInput, this.style.textAreaFieldInput]}
                     onChangeText={(text) => this.handleChange(text)}
                     placeholder={this.data.placeholder}
                     value={this.props.value}
