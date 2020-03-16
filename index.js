@@ -15,6 +15,7 @@ import {
     SectionField,
     SelectField,
     TextField,
+    TextAreaField,
 } from './fieldComponents'
 
 export default class GravityForm extends Component {
@@ -265,6 +266,7 @@ export default class GravityForm extends Component {
         section: SectionField,
         select: SelectField,
         text: TextField,
+        textarea: TextAreaField,
     }
 
     render() {
