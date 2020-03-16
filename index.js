@@ -311,8 +311,8 @@ export default class GravityForm extends Component {
             )
         })
 
-        const showFormTitle = this.state.formData.title.length && !this.props.hideFormTitle;
-        const showFormDescription = this.state.formData.description.length && !this.props.hideFormDescription;
+        const showFormTitle = this.state.formData.title.length > 0 && !this.props.hideFormTitle;
+        const showFormDescription = this.state.formData.description.length > 0 && !this.props.hideFormDescription;
 
         return (
             <KeyboardAwareScrollView style={this.style.formWrapper}>
