@@ -25,8 +25,11 @@ export default class GravityForm extends Component {
         this.siteURL = this.props.siteURL
         this.formID = this.props.formID || this.props.formData.id
         const credentials = this.props.credentials
-        const credentialString = `${credentials.userName}:${credentials.password}`
-        this.encodedCredentials = base64.encode(credentialString)
+        if(typeof credentials.token !== 'undefined') {
+          this.authorization = `Bearer ${credentials.token}`
+        } else {
+          this.authorization = 'Basic ' + base64.encode(`${credentials.userName}:${credentials.password}`)
+        }
         this.style = this.props.style
         this.state = {
             formData: {},
@@ -61,7 +64,7 @@ export default class GravityForm extends Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': `Basic ${this.encodedCredentials}`,
+                    'Authorization': this.authorization,
                 }
             })
                 .then(response => response.json().then(formData => resolve(formData)))
@@ -252,7 +255,7 @@ export default class GravityForm extends Component {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Basic ${this.encodedCredentials}`,
+                'Authorization': this.authorization,
             },
             body: JSON.stringify(formData),
         })
