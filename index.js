@@ -23,7 +23,7 @@ export default class GravityForm extends Component {
     constructor(props) {
         super(props)
         this.siteURL = this.props.siteURL
-        this.formID = this.props.formID
+        this.formID = this.props.formID || this.props.formData.id
         const credentials = this.props.credentials
         const credentialString = `${credentials.userName}:${credentials.password}`
         this.encodedCredentials = base64.encode(credentialString)
@@ -53,6 +53,9 @@ export default class GravityForm extends Component {
 
     fetchFormData() {
         return new Promise((resolve, reject) => {
+          if(this.props.formData !== 'undefined') {
+            resolve(this.props.formData);
+          } else {
             fetch(`${this.siteURL}/wp-json/gf/v2/forms/${this.formID}`, {
                 method: 'GET',
                 headers: {
@@ -63,6 +66,7 @@ export default class GravityForm extends Component {
             })
                 .then(response => response.json().then(formData => resolve(formData)))
                 .catch(err => reject('ERROR: ', err))
+          }
         })
     }
 
