@@ -259,7 +259,7 @@ export default class GravityForm extends Component {
             },
             body: JSON.stringify(formData),
         })
-            .then(() => this.setState({ isSending: false }))
+            .then(() => this.setState({ isSending: false, submitSuccess: true }))
             .catch(err => console.error('ERROR: ', err));
     }
 
@@ -291,6 +291,15 @@ export default class GravityForm extends Component {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator {...this.loaderProps} />
+                </View>
+            )
+        }
+        if (this.state.submitSuccess) {
+            return (
+                <View style={this.style.confirmationWrapper}>
+                    <Text style={this.style.confirmationText}>
+                      {this.state.formData.confirmations[Object.keys(this.state.formData.confirmations)[0]].message}
+                    </Text>
                 </View>
             )
         }
