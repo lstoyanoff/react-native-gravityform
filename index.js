@@ -294,15 +294,6 @@ export default class GravityForm extends Component {
                 </View>
             )
         }
-        if (this.state.submitSuccess) {
-            return (
-                <View style={this.style.confirmationWrapper}>
-                    <Text style={this.style.confirmationText}>
-                      {this.state.formData.confirmations[Object.keys(this.state.formData.confirmations)[0]].message}
-                    </Text>
-                </View>
-            )
-        }
         let parentHidden = false
         const fields = this.state.formData.fields && this.state.formData.fields.map((field) => {
             if (Object.keys(this.fieldComponents).indexOf(field.type) < 0) {
@@ -331,7 +322,7 @@ export default class GravityForm extends Component {
         const showFormDescription = this.state.formData.description.length > 0 && !this.props.hideFormDescription;
 
         return (
-            <KeyboardAwareScrollView style={this.style.formWrapper}>
+            <KeyboardAwareScrollView style={this.style.formWrapper} contentContainerStyle={{flexGrow: 1}}>
                 {(showFormTitle || showFormDescription) &&
                     <View style={this.style.formHeader}>
                         {showFormTitle &&
@@ -343,10 +334,19 @@ export default class GravityForm extends Component {
                         }
                     </View>
                 }
-                <View style={this.style.formBody}>
-                    {fields}
-                </View>
-                {this.state.formData.button &&
+                {this.state.submitSuccess &&
+                    <View style={this.style.confirmationWrapper}>
+                        <Text style={this.style.confirmationText}>
+                            {this.state.formData.confirmations[Object.keys(this.state.formData.confirmations)[0]].message}
+                        </Text>
+                    </View>
+                }
+                {!this.state.submitSuccess &&
+                    <View style={this.style.formBody}>
+                        {fields}
+                    </View>
+                }
+                {!this.state.submitSuccess && this.state.formData.button &&
                     <View style={this.style.formFooter}>
                         <TouchableOpacity onPress={() => this.submitForm()} style={this.style.button}>
                             <Text style={this.style.buttonText}>{this.state.formData.button.text}</Text>
