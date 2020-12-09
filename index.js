@@ -282,14 +282,14 @@ export default class GravityForm extends Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator {...this.loaderProps} />
                 </View>
             )
         }
         if (this.state.isSending) {
             return (
-                <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator {...this.loaderProps} />
                 </View>
             )
